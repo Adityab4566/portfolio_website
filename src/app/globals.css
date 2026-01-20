@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+:root {
+  /* Single-theme (dark) tokens */
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --surface: #0b0b0b;
+  --border: #262626;
+  --muted: #9ca3af;
+  --card-bg: rgba(255,255,255,0.05);
+  --card-border: #262626;
+  --button-secondary-bg: #111827;
+  --button-secondary-fg: #e5e7eb;
+  --input-bg: #0f0f0f;
+  --rail-bg: #111827;
+  --rail-border: #1f2937;
+  --accent: #60a5fa;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+/* Removed data-theme variants to keep single theme */
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Muted text utility for theme-aware secondary content */
+.muted { color: var(--muted); }
+
+/* Shared components */
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  padding: 1rem;
+  border-radius: 0.75rem;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--rail-bg);
+  color: var(--foreground);
+  border: 1px solid var(--rail-border);
+  padding: 0.25rem 0.5rem;
+  border-radius: 0.375rem;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+}
+.btn-primary { background: #2563eb; color: white; }
+.btn-secondary { background: var(--button-secondary-bg); color: var(--button-secondary-fg); border: 1px solid var(--rail-border); }
+
+.glass {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  backdrop-filter: blur(6px);
+}
+
+.timeline-dot {
+  position: absolute;
+  left: 0.5rem;
+  top: 0.5rem;
+  width: 0.5rem;
+  height: 0.5rem;
+  background: #2563eb;
+  border-radius: 9999px;
+}
+
+.skill-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: 1px solid var(--card-border);
+  border-radius: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.right-rail {
+  position: fixed;
+  right: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  z-index: 50;
+}
+
+.rail-item {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 9999px;
+  border: 1px solid var(--rail-border);
+  background: var(--rail-bg);
+  color: var(--foreground);
+  transition: background 150ms, transform 150ms;
+}
+
+.rail-item:hover { background: #e5e7eb; transform: translateY(-1px); }
+
+/* Inputs and links */
+.input {
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--card-border);
+  background: var(--input-bg);
+  color: var(--foreground);
+}
+
+.icon-link {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--foreground);
+  text-decoration: none;
+}
+.icon-link svg {
+  width: 24px;
+  height: 24px;
+  padding: 10px;
+  border-radius: 0.75rem;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid var(--card-border);
+  transition: background 200ms, box-shadow 200ms, transform 200ms, color 200ms;
+}
+.icon-link span { font-size: 0.95rem; }
+.icon-link:hover svg, .icon-link:focus-visible svg {
+  background: rgba(255,255,255,0.12);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset, 0 0 36px rgba(96,165,250,0.35);
+  transform: translateY(-2px);
+}
+.icon-link:hover span, .icon-link:focus-visible span { text-decoration: underline; text-underline-offset: 3px; }
+.connect-icons { display:flex; align-items:center; justify-content:center; gap:1.25rem; flex-wrap:wrap; }
+
+/* Background gradient */
+.gradient-bg {
+  background: radial-gradient(600px circle at 20% 20%, rgba(59,130,246,0.15), transparent 40%),
+              radial-gradient(600px circle at 80% 30%, rgba(34,197,94,0.12), transparent 40%),
+              linear-gradient(to bottom, var(--surface), var(--background));
+}
+
+/* Removed theme toggle button styles */
+
+/* Dotted tag line banner */
+.dots-overlay {
+  position: relative;
+  background-image: radial-gradient(rgba(0,0,0,0.12) 1px, transparent 1px);
+  background-size: 16px 16px;
+}
+/* Single theme: no light override */
+:root[data-theme="dark"] .dots-overlay {
+  background-image: radial-gradient(rgba(255,255,255,0.08) 1px, transparent 1px);
+}
+.tagline {
+  font-size: clamp(2rem, 6vw, 5rem);
+  font-weight: 600;
+  color: var(--foreground);
+  opacity: 0.85;
+}
+
+/* Social pills under hero */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1rem;
+  align-items: start;
+  justify-items: center;
+}
+.social-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+.pill {
+  width: 3.5rem;
+  height: 3.5rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 0.75rem;
+  color: var(--foreground);
+  transition: background 200ms, box-shadow 200ms, transform 200ms, color 200ms;
+}
+.pill-text {
+  font-size: 0.95rem;
+  color: var(--muted);
+}
+/* Hover/Focus glow without changing icon sizes */
+.pill:hover,
+.pill:focus-visible {
+  background: rgba(255,255,255,0.08);
+  box-shadow: 0 0 0 1px rgba(255,255,255,0.08) inset, 0 0 36px rgba(96,165,250,0.35);
+  transform: translateY(-2px);
+}
+.pill:hover + .pill-text,
+.pill:focus-visible + .pill-text {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
