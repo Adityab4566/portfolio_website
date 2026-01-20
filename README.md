@@ -2,8 +2,6 @@
 
 A modern, high-performance portfolio website built with **Next.js 15**, **TypeScript**, and **Tailwind CSS**. Designed to showcase software engineering projects, skills, and achievements with a sleek dark-themed UI and smooth animations.
 
-![Portfolio Preview](public/preview.jpg)
-*(Note: Add a `preview.jpg` to your public folder for a thumbnail)*
 
 ## ✨ Features
 
@@ -75,10 +73,6 @@ The easiest way to deploy is using **Vercel**.
 npm run build
 npm start
 ```
-
-## 📄 License
-
-This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
